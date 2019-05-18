@@ -8,13 +8,17 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./private-view.component.css']
 })
 export class PrivateViewComponent implements OnInit {
-
+  logoutAction = 'LOGOUT';
   constructor(private router: Router, private http: HttpService) { }
 
   ngOnInit() {
     this.http.changeLoginStatus('Logged In');
   }
-  onLogout(){
-    this.router.navigate(['welcomePage/login'], {skipLocationChange: true})
+  onLogout() {
+    this.logoutAction = 'Logging Out';
+    this.http.changeLoginStatus('Logging Out');
+    setTimeout(() => {
+      this.router.navigate(['welcomePage/login'], { skipLocationChange: true });
+    }, 3000);
   }
 }

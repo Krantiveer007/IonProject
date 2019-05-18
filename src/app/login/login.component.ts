@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.get('username').value;
     const password = this.loginForm.get('password').value;
     this.http.changeLoginStatus('Logging In');
-    this.submitButtonAction = 'Loggin In';
+    this.submitButtonAction = 'Logging In';
     this.http.authenticateUser(username, password).subscribe((response) => {
       if (response.status === true) {
         this.router.navigate(['/welcomePage/privateView'], { skipLocationChange: true });
